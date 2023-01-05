@@ -23,7 +23,7 @@ const Login = () => {
                 }))
                 push('/');
             })
-            .catch(alert('Invalid user'))
+            .catch(console.log)
     };
 
 
