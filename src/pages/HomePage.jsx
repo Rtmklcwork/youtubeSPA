@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import {useAuth} from '../hooks/use-auth';
 import { useDispatch } from 'react-redux';
 import { removeUser } from '../store/slices/userSlice';
+import Videos from '../components/Videos';
+import App from '../components/Tabs';
 
 
 const HomePage = () => {
@@ -11,7 +13,8 @@ const HomePage = () => {
     const {isAuth, email} = useAuth();
     return isAuth ? (
         <div>
-            <h1>Welcome</h1>
+            <App/>
+          
 
             <button onClick={()=> dispatch(removeUser())}>
                 Log out from {email}
