@@ -1,6 +1,8 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 
 
 
@@ -8,14 +10,12 @@ import { useState } from 'react';
 
 
 const Videos = () => {
-
+    const dispatch = useDispatch()
     const [videos, setVideos] = useState([])
     const [value, setValue] = useState('')
     const urlKEY = "AIzaSyCluKfq9XYmCC32ZAcNy-ZHYsHXHHpu8Lk";
     const fetchURL = `https://youtube.googleapis.com/youtube/v3/search?q=${value}&key=${urlKEY}`;
-    // useEffect(() => {
-    //     setVideos()
-    // }, []);
+
 
     const handleClick = () => {
         axios.get(fetchURL)
@@ -37,7 +37,9 @@ const Videos = () => {
                         value={value}
                         type="text"
                         placeholder='search video...'
-                        onChange={(e) => setValue(e.target.value)} />
+                        onChange={(e) =>{
+                            dispatch(setValue(e.target.value))
+                        } } />
                 </form>
                 <button onClick={handleClick}>
                     Search
@@ -49,7 +51,7 @@ const Videos = () => {
                         return (
                             <div>
                                 <iframe width="200" height="200" src={"https://www.youtube.com/embed/" + items.id.videoId} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                               <p>{items.title}</p>
+                                <p>{items.title}</p>
                             </div>
 
                         )
