@@ -12,12 +12,14 @@ import {
     REGISTER
 } from 'redux-persist';
 import storage from "redux-persist/lib/storage";
+import textSlice from "../slices/textSlice";
 
 
 
 const rootReducer = combineReducers({
     user: userReducer,
     saved: savedSlice,
+    text: textSlice,
 })
 
 

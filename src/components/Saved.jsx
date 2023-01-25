@@ -1,15 +1,25 @@
 import React from 'react'
-
-import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import SavedText from './SavedText'
 
 const Saved = () => {
-    const savedVideo = useSelector((state) => state.saved.savedVideos)
-    return (
-
-        <div>
-          {savedVideo}
-        </div>
-    )
+    const dispatch = useDispatch()
+   
+  return (
+  
+   <div>
+    
+ <form action="">
+    <input type="text" 
+    placeholder='input text...'
+    onChange={(e)=>dispatch(e.target.value)}/>
+   </form>
+   <div>
+   <SavedText/>
+   </div>
+  
+   </div>
+  )
 }
 
 export default Saved

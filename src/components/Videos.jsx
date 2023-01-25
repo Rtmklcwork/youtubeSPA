@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import {setSavedVideos} from '../slices/SavedSlice'
 
 
 
@@ -15,6 +16,7 @@ const Videos = () => {
     const [value, setValue] = useState('')
     const urlKEY = "AIzaSyCluKfq9XYmCC32ZAcNy-ZHYsHXHHpu8Lk";
     const fetchURL = `https://youtube.googleapis.com/youtube/v3/search?q=${value}&key=${urlKEY}`;
+    
 
 
     const handleClick = () => {
@@ -37,9 +39,9 @@ const Videos = () => {
                         value={value}
                         type="text"
                         placeholder='search video...'
-                        onChange={(e) =>{
-                            dispatch(setValue(e.target.value))
-                        } } />
+                        onChange={(e) => {
+                            dispatch(setSavedVideos(e.target.value))
+                        }} />
                 </form>
                 <button onClick={handleClick}>
                     Search

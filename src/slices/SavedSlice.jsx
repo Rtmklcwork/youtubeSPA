@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
@@ -8,14 +8,14 @@ const initialState = {
 export const savedSlice = createSlice({
     name: 'Saved',
     initialState,
-    reducers:{
-        setSavedVideo:(state,action)=>{
+    reducers: {
+        setSavedVideos: (state, action) => {
             state.savedVideos = action.payload
         },
     },
 });
 
 
-export const {setSavedVideo} = savedSlice.actions;
+export const { setSavedVideos } = savedSlice.actions;
 
 export default savedSlice.reducer;
