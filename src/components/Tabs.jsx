@@ -1,5 +1,5 @@
 import { Tabs } from 'antd';
-import Saved from './Saved';
+import SavedVideo from './savedVideo';
 
 import Videos from './Videos';
 const onChange = (key) => {
@@ -14,7 +14,7 @@ const items = [
   {
     key: '2',
     label: `Сохраненные`,
-    children: <Saved/>,
+    children: <SavedVideo/>,
   },
 
 ];
