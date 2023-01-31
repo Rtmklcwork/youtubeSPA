@@ -1,22 +1,22 @@
 import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import {setSavedVideos} from '../slices/SavedSlice'
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import { addRequests } from '../store/slices/requestsSlice';
 
 
 
 
 
 const Videos = () => {
-    const dispatch = useDispatch()
+
+
     const [videos, setVideos] = useState([])
     const [value, setValue] = useState('')
     const urlKEY = "AIzaSyCluKfq9XYmCC32ZAcNy-ZHYsHXHHpu8Lk";
     const fetchURL = `https://youtube.googleapis.com/youtube/v3/search?q=${value}&key=${urlKEY}`;
-    
+    const dispatch = useDispatch()
+    const store = useSelector((state)=>state)
 
 
     const handleClick = () => {
@@ -26,21 +26,29 @@ const Videos = () => {
             })
 
             .catch(e => console.log(e))
+            setValue('')
+         
+console.log({value});
+dispatch(addRequests(value))
 
-    }
+    };
+
+    console.log(store);
 
 
     return (
         <>
             <div>
                 <h1>Поиск видео</h1>
-                <form action="">
+                <form action=''
+               >
                     <input
+                    
                         value={value}
                         type="text"
                         placeholder='search video...'
                         onChange={(e) => {
-                            dispatch(setSavedVideos(e.target.value))
+                            setValue(e.target.value)
                         }} />
                 </form>
                 <button onClick={handleClick}>
@@ -48,11 +56,11 @@ const Videos = () => {
                 </button>
 
                 <div>
-                    {videos.map((items) => {
-                        console.log(items);
+                    {videos.map((items, id) => {
+                        // console.log(items);
                         return (
-                            <div>
-                                <iframe width="200" height="200" src={"https://www.youtube.com/embed/" + items.id.videoId} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <div key={id}>
+                                <iframe width="200" height="200" src={"https://www.youtube.com/embed/" + items.id.videoId} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                                 <p>{items.title}</p>
                             </div>
 

@@ -1,13 +1,13 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import Videos from './Videos'
+import { useState } from 'react'
 
-const SavedVideo = () => {
-    const savedRequests = useSelector((state)=> state)
-    console.log(savedRequests);
+const SavedVideo = ({value}) => {
+  
   return (
     <div>
-      Hello 
-    </div>
+      {value}
+   </div>
   )
 }
 
