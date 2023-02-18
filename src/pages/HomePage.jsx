@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import {useAuth} from '../hooks/use-auth';
 import { useDispatch } from 'react-redux';
 import { removeUser } from '../store/slices/userSlice';
-import Videos from '../components/Videos';
 import App from '../components/Tabs';
 
 
@@ -17,7 +16,8 @@ const HomePage = () => {
             <App/>
          
 
-            <button onClick={()=> dispatch(removeUser())}>
+            <button className='lgn_btn'
+             onClick={()=> dispatch(removeUser())}>
                 Log out from {email}
             </button>
         </div> 
