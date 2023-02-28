@@ -1,5 +1,6 @@
 import { Tabs } from 'antd';
 import SavedRequests from './SavedRequests';
+import Tabbb from './Tabbb';
 
 
 import Videos from './Videos';
@@ -16,6 +17,11 @@ const items = [
     key: '2',
     label: `Сохраненные`,
     children: <SavedRequests/>,
+  },
+  {
+    key: '3',
+    label: `Tabbbs`,
+    children: <Tabbb/>,
   },
 
 ];
