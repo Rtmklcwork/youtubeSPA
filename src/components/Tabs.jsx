@@ -1,6 +1,6 @@
 import { Tabs } from 'antd';
 import SavedRequests from './SavedRequests';
-import Tabbb from './Tabbb';
+import MyForm from './MyForm';
 
 
 import Videos from './Videos';
@@ -20,10 +20,10 @@ const items = [
   },
   {
     key: '3',
-    label: `Tabbbs`,
-    children: <Tabbb/>,
+    label: `форма`,
+    children: <MyForm/>,
   },
-
+ 
 ];
 const App = () => <Tabs defaultActiveKey="1" items={items} onChange={onChange} />;
 export default App
