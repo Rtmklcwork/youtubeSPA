@@ -36,9 +36,7 @@ const Videos = () => {
     const getSavedRequests = () => {
         dispatch(addRequests(value))
     }
-    console.log(isList);
-
-    console.log(videos);
+  
     return (
         <>
 

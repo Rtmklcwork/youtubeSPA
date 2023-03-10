@@ -5,7 +5,8 @@ import MyForm from './MyForm'
 
 const SavedRequests = () => {
   const requests = useSelector(state => state.requests.requests)
-  const [modalActive, setModalActive] = useState(true)
+  const [modalActive, setModalActive] = useState(false)
+  console.log(requests);
   return (
     <div>
       {console.log(requests)
