@@ -18,11 +18,7 @@ const items = [
     label: `Сохраненные`,
     children: <SavedRequests/>,
   },
-  {
-    key: '3',
-    label: `форма`,
-    children: <MyForm/>,
-  },
+
  
 ];
 const App = () => <Tabs defaultActiveKey="1" items={items} onChange={onChange} />;

@@ -3,14 +3,21 @@ import { Slider } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { addFilterData } from '../store/slices/filterSlice'
 
-const MyForm = () => {
-    const [value, setValue] = useState({ name: '', quantity: 0, selected: '' })
-    console.log(value);
+const MyForm = ({ item }) => {
+    const store = useSelector(state => state.filter.filterData)
+    console.log(store);
 
+    // console.log(value);
+
+
+    const [value, setValue] = useState({ name: '', selected: '', quantity: 0 })
     const dispatch = useDispatch()
     const handleClick = () => {
-       dispatch(addFilterData({value}))
+        dispatch(addFilterData({ value }))
+
     }
+
+
     return (
         <form>
             <div>
@@ -18,20 +25,34 @@ const MyForm = () => {
                 <input
                     type="text"
                     readOnly
-                    value='save request'
+                    value={item}
                 />
             </div>
             <div>
                 <input
                     value={value.name}
-                    onChange={(e) => setValue(e.target.value)}
+                    onChange={(vlaue3) => setValue((prevname) => {
+                        const data = {
+                            ...prevname
+
+                        }
+                        data.quantity = vlaue3
+                        return data
+                    })}
                     type="text"
                 />
             </div>
             <div>
                 <select
                     value={value.selected}
-                    onChange={(e) => setValue(e.target.value)}
+                    onChange={(vlaue2) => setValue((prevselect) => {
+                        const data = {
+                            ...prevselect
+
+                        }
+                        data.quantity = vlaue2
+                        return data
+                    })}
                     placeholder='без сортировки'
                     style={{ width: 200 }}
                     name='Сортировать по'>
@@ -44,7 +65,14 @@ const MyForm = () => {
             <div>
 
                 <Slider
-                    onChange={(e) => setValue(e.target.value)}
+                    onChange={(vlaue1) => setValue((prevdata) => {
+                        const data = {
+                            ...prevdata
+
+                        }
+                        data.quantity = vlaue1
+                        return data
+                    })}
                     value={value.quantity}
                     style={{ width: 200 }}
                     marks={{
@@ -57,12 +85,10 @@ const MyForm = () => {
                     }}
                 />
             </div>
-            <div>{value.name}</div>
-            <div>{value.quantity}</div>
-            <div>{value.selected}</div>
+
             <div>
-                <button>Не сохранять</button>
-                <button onClick={() => handleClick()}>Сохранить</button>
+                <button type='button'>Не сохранять</button>
+                <button type='button' onClick={() => handleClick()}>Сохранить</button>
             </div>
         </form>
     )

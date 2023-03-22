@@ -14,12 +14,13 @@ import { IsTableBtn } from '../utils/IsTableBtn';
 
 const Videos = () => {
     const [videos, setVideos] = useState([])
-    const [value, setValue] = useState('')
+    const [value, setValue] = useState([])
+    const [isList, setIsList] = useState(true)
+
     const urlKEY = "AIzaSyCluKfq9XYmCC32ZAcNy-ZHYsHXHHpu8Lk";
     const fetchURL = `https://youtube.googleapis.com/youtube/v3/search?q=${value}&key=${urlKEY}&part=snippet,id&order=date&maxResults=10`;
     const dispatch = useDispatch()
-    const [isList, setIsList] = useState(true)
-
+   
     const handleClick = () => {
         axios.get(fetchURL)
             .then((response) => {

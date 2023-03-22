@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    requests: ['cats', 'батайск'],
+    requests: [],
 };
 
 const requestsSlice = createSlice({

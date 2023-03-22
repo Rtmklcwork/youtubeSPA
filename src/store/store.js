@@ -10,7 +10,7 @@ export default configureStore({
     reducer:{
     user: userReducer,
     requests: requestsReducer,
-    filer: filterReducer,
+    filter: filterReducer,
 
     }
     
