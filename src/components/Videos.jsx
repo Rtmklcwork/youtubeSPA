@@ -1,7 +1,7 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addRequests } from '../store/slices/requestsSlice';
 import { IsListBtn } from '../utils/IsListBtns';
 import { IsTableBtn } from '../utils/IsTableBtn';
@@ -20,7 +20,13 @@ const Videos = () => {
     const urlKEY = "AIzaSyCluKfq9XYmCC32ZAcNy-ZHYsHXHHpu8Lk";
     const fetchURL = `https://youtube.googleapis.com/youtube/v3/search?q=${value}&key=${urlKEY}&part=snippet,id&order=date&maxResults=10`;
     const dispatch = useDispatch()
-   
+    const store = useSelector(state => state.filter.filterData)
+    console.log(1, store.value);
+    // console.log(title);
+    // console.log(selected);
+    // console.log(quantity);
+
+
     const handleClick = () => {
         axios.get(fetchURL)
             .then((response) => {
@@ -37,7 +43,21 @@ const Videos = () => {
     const getSavedRequests = () => {
         dispatch(addRequests(value))
     }
-  
+
+    useEffect(() => {
+        store.value
+            ?
+            axios.get(`https://youtube.googleapis.com/youtube/v3/search?q=${store.value.title}&key=${urlKEY}&part=snippet,id&order=date&maxResults=${store.value.quantity}`)
+                .then((response) => {
+                    setVideos(response.data.items)
+                })
+
+                .catch(e => console.log(e))
+            :
+            <div>111</div>
+
+    },[store.value])
+
     return (
         <>
 
@@ -60,9 +80,9 @@ const Videos = () => {
                     </form>
 
                     <button
-                     onClick={getSavedRequests}>
+                        onClick={getSavedRequests}>
                         Save
-                        </button>
+                    </button>
 
                     <button
                         onClick={handleClick}>

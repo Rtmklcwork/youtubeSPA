@@ -6,7 +6,7 @@ import MyForm from './MyForm'
 const SavedRequests = () => {
   const requests = useSelector(state => state.requests.requests)
   const [modalActive, setModalActive] = useState('')
-  
+
   return (
     <div>
       {console.log(requests)
@@ -14,18 +14,21 @@ const SavedRequests = () => {
       {requests.map((item) => {
         return (
           <div key={item.id}>
-            <button onClick={()=> setModalActive(item)}>{item}</button>
+            <button onClick={() => setModalActive(item)}>{item}</button>
           </div>
-          
+
 
         )
       })}
       <MyModal
-      active={!!modalActive}
-      setActive={setModalActive}
+        active={!!modalActive}
+        setActive={setModalActive}
       >
-        <MyForm item={modalActive}/>
+        <MyForm
+          setActive={setModalActive}
+          item={modalActive} />
       </MyModal>
+      {/* <FiltredVideos/> */}
     </div>
   )
 }

@@ -1,9 +1,8 @@
 import { Tabs } from 'antd';
 import SavedRequests from './SavedRequests';
-import MyForm from './MyForm';
-
-
 import Videos from './Videos';
+
+
 const onChange = (key) => {
   console.log(key);
 };
@@ -21,5 +20,5 @@ const items = [
 
  
 ];
-const App = () => <Tabs defaultActiveKey="1" items={items} onChange={onChange} />;
-export default App
+const   Tabs1 = () => <Tabs defaultActiveKey="1" items={items} onChange={onChange} />;
+export default Tabs1
