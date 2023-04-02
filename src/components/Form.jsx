@@ -6,7 +6,7 @@ const Form = ({ title, handleClick }) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     return (
-        <div>
+        <div className='log'>
             <input
                 type='email'
                 value={email}

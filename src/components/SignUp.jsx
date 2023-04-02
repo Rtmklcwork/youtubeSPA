@@ -3,12 +3,12 @@ import { useDispatch } from 'react-redux';
 import Form from './Form';
 import { setUser } from '../store/slices/userSlice';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
 
     const dispatch = useDispatch();
-    const { push } = useHistory();
+    const navigate = useNavigate();
 
     const handleRegister = (email, password) => {
         const auth = getAuth();
@@ -19,7 +19,7 @@ const SignUp = () => {
                     id: user.uid,
                     token: user.accessToken,
                 }))
-                push('/');
+                navigate('/');
             })
             .catch(console.error)
     };

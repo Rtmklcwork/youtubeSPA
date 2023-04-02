@@ -24,7 +24,7 @@ const Videos = () => {
     console.log(1, store.value);
     // console.log(title);
     // console.log(selected);
-    // console.log(quantity);
+// console.log(store.value.quantity);
 
 
     const handleClick = () => {
@@ -47,7 +47,7 @@ const Videos = () => {
     useEffect(() => {
         store.value
             ?
-            axios.get(`https://youtube.googleapis.com/youtube/v3/search?q=${store.value.title}&key=${urlKEY}&part=snippet,id&order=date&maxResults=${store.value.quantity}`)
+            axios.get(`https://youtube.googleapis.com/youtube/v3/search?q=${store.value.title}&key=${urlKEY}&part=snippet,id&order=${store.value.selected}&maxResults=${store.value.quantity}`)
                 .then((response) => {
                     setVideos(response.data.items)
                 })

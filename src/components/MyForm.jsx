@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { Slider } from 'antd'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addFilterData } from '../store/slices/filterSlice'
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const MyForm = ({ item, setActive }) => {
+    let navigate = useNavigate()
     const [value, setValue] = useState({id: Date.now(), title: '', selected: '', quantity: 0 })
-    const history = useHistory()
-    const dispatch = useDispatch()
+       const dispatch = useDispatch()
     const handleClick = () => {
         dispatch(addFilterData({ value }))
-        history.push('/home')
+        navigate(`/tabs/${1}`)
     }
     return (
         <>

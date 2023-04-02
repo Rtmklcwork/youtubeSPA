@@ -1,5 +1,5 @@
 import {
-  Switch,
+  Routes,
   Route,
 } from 'react-router-dom';
 import './App.css';
@@ -9,20 +9,25 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import Tabs1 from './components/Tabs.jsx'
+import { useParams } from 'react-router-dom';
 
 function App() {
-   return (
-    <Switch>
+  const {id} = useParams()
+  console.log(111, id);
+ ;
+  return (
+   
+    <Routes>
+      <Route path='/' element={<HomePage />} />
+      <Route path='/login' element={<LoginPage />} />
+      <Route path='/register' element={<RegisterPage />} />
+      <Route path='/saved' element={<SavedRequests />} />
+      <Route path='/tabs/:id' element={<Tabs1 />} />
+      <Route path='/videos' element={<Videos />} />
+    </Routes>
 
-      {/* <Route exact path="" component={}></Route> */}
-      <Route exact path="/" component={HomePage}></Route>
-      <Route exact path="/login" component={LoginPage}></Route>
-      <Route exact path="/register" component={RegisterPage}></Route>
-      <Route exact path="/saved" component={SavedRequests}></Route>
-      <Route exact path="/home" component={Videos}></Route>
-      <Route exact path="/tabs" component={Tabs1}></Route>
 
-    </Switch>
+
   );
 }
 
