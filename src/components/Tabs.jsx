@@ -1,24 +1,62 @@
 import { Tabs } from 'antd';
 import SavedRequests from './SavedRequests';
 import Videos from './Videos';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 
-const onChange = (key) => {
-  console.log(key);
-};
-const items = [
-  {
-    key: '1',
-    label: 'Поиск',
-    children: <Videos/>,
-  },
-  {
-    key: '2',
-    label: `Сохраненные`,
-    children: <SavedRequests/>,
-  },
 
- 
-];
-const   Tabs1 = () => <Tabs defaultActiveKey="1" items={items} onChange={onChange} />;
+const Tabs1 = () => {
+  const changeActive = (key) =>{
+    setActiveKey(key)
+  }
+  const [activeKey, setActiveKey] = useState("1")
+  console.log(1111,activeKey);
+  return (
+    <Tabs onChange={changeActive} activeKey={activeKey} >
+      <Tabs.TabPane tab="Search" key="1">
+        <Videos />
+      </Tabs.TabPane>
+
+      <Tabs.TabPane tab="Saved" key="2">
+        <SavedRequests setActiveKey={setActiveKey} />
+      </Tabs.TabPane>
+    </Tabs>
+  )
+}
+
+
+
+
+
+// const Tabs1 = () => {
+
+//   const [activeKey, setActiveKey] = useState(1)
+//   const navigate = useNavigate()
+//   const onChange = (key) => {
+
+//     navigate(`/tabs/${key}`)
+//   };
+//   const items = [
+//     {
+//       key: '1',
+//       label: 'Поиск',
+//       children: <Videos />,
+//     },
+//     {
+//       key: '2',
+//       label: `Сохраненные`,
+//       children: <SavedRequests setActiveKey={setActiveKey} />,
+//     },
+
+
+//   ];
+//   console.log(items);
+// const { id } = useParams()
+// console.log(111,id);
+//   return (
+//     <Tabs activeKey={activeKey}  defaultActiveKey={id} items={items} onChange={onChange} />
+//   )
+// }
 export default Tabs1

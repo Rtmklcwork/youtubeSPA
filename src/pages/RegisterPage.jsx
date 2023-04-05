@@ -4,7 +4,7 @@ import SignUp from '../components/SignUp';
 
 const RegisterPage = () => {
   return (
-    <div>
+    <div className='lgn'>
       <h1>Register</h1>
       <SignUp/>
       <p>

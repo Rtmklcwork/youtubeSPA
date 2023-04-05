@@ -34,7 +34,7 @@ const HomePage = () => {
 
     const { isAuth, email } = useAuth();
     return isAuth ? (
-        <div>
+        <div className='lgn'>
             <App />
 
             <button className='lgn_btn'

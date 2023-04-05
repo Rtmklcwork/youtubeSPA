@@ -26,7 +26,7 @@ const SignUp = () => {
 
 
     return (
-        <div>
+        <div className='lgn'>
             <Form
                 title='register'
                 handleClick={handleRegister}

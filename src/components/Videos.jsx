@@ -77,17 +77,19 @@ const Videos = () => {
                             }}>
 
                         </input>
+                        <button
+                        onClick={handleClick}>
+                        Search
+                    </button>
                     </form>
 
                     <button
+                   
                         onClick={getSavedRequests}>
                         Save
                     </button>
 
-                    <button
-                        onClick={handleClick}>
-                        Search
-                    </button>
+                  
                 </div>
 
                 <div>
