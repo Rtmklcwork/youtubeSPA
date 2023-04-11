@@ -22,13 +22,15 @@ const Login = () => {
                     token: user.accessToken,
                 }))
                 navigate('/');
+               
             })
             .catch(console.log)
     };
 
 
     return (
-        <div>
+        <div className='login'>
+           
             <Form
                 title='sign in'
                 handleClick={handleLogin}

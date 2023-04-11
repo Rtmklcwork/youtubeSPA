@@ -1,8 +1,6 @@
 import { Tabs } from 'antd';
 import SavedRequests from './SavedRequests';
 import Videos from './Videos';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
@@ -12,7 +10,7 @@ const Tabs1 = () => {
     setActiveKey(key)
   }
   const [activeKey, setActiveKey] = useState("1")
-  console.log(1111,activeKey);
+  
   return (
     <Tabs onChange={changeActive} activeKey={activeKey} >
       <Tabs.TabPane tab="Search" key="1">

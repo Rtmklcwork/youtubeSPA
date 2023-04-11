@@ -13,7 +13,7 @@ const requestsSlice = createSlice({
         },
         deleteRequest(state, action) {
 
-            state.requests = state.requests.filter((item) => item !== action.payload)
+            state.requests = state.requests.filter((item) => typeof(item)==='string' && item !== action.payload)
                 
         }
     }

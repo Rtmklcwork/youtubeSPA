@@ -2,14 +2,13 @@ import React, { useState } from 'react'
 import { Slider } from 'antd'
 import { useDispatch } from 'react-redux'
 import { addFilterData } from '../store/slices/filterSlice'
-import { useNavigate, useLocation } from 'react-router-dom';
+
 
 
 
 const MyForm = ({ item, setActive, setActiveKey }) => {
-    const navigate = useNavigate()
-    const location = useLocation()
-    console.log(122,setActiveKey);
+
+   
     const [value, setValue] = useState({id: Date.now(), title: '', selected: '', quantity: 0 })
        const dispatch = useDispatch()
     const handleClick = async () => {

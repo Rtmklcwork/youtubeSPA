@@ -12,6 +12,7 @@ import { IsTableBtn } from '../utils/IsTableBtn';
 
 
 
+
 const Videos = () => {
     const [videos, setVideos] = useState([])
     const [value, setValue] = useState([])
@@ -22,9 +23,7 @@ const Videos = () => {
     const dispatch = useDispatch()
     const store = useSelector(state => state.filter.filterData)
     console.log(1, store.value);
-    // console.log(title);
-    // console.log(selected);
-// console.log(store.value.quantity);
+
 
 
     const handleClick = () => {
@@ -41,7 +40,8 @@ const Videos = () => {
     };
 
     const getSavedRequests = () => {
-        dispatch(addRequests(value))
+        value !== '' ? dispatch(addRequests(value)) : alert('Введите название запроса')
+
     }
 
     useEffect(() => {
@@ -56,93 +56,91 @@ const Videos = () => {
             :
             <div>111</div>
 
-    },[store.value])
+    }, [store.value])
 
     return (
         <>
 
-            <div>
-                <h1>Поиск видео</h1>
-
+            <div >
+                <div >
+                    Поиск видео
+                </div>
                 <div>
-                    <form action=''
+                    <input
+                        value={value}
+                        type="text"
+                        placeholder='search video...'
+                        onChange={(e) => {
+                            setValue(e.target.value)
+                        }}>
+                    </input>
 
-                    >
-                        <input
-                            value={value}
-                            type="text"
-                            placeholder='search video...'
-                            onChange={(e) => {
-                                setValue(e.target.value)
-                            }}>
-
-                        </input>
-                        <button
+                    <button
+                        className='search_btn'
                         onClick={handleClick}>
                         Search
                     </button>
-                    </form>
-
+                </div>
+                <div>
                     <button
-                   
                         onClick={getSavedRequests}>
                         Save
                     </button>
-
-                  
                 </div>
+            </div>
 
-                <div>
-                    <IsListBtn onClick={() => setIsList(true)} />
-                    <IsTableBtn onClick={() => setIsList(false)} />
-                </div>
+            <div>
+                <IsListBtn onClick={() => setIsList(true)} />
+                <IsTableBtn onClick={() => setIsList(false)} />
+            </div>
 
-                <div className={!isList ? 'gridBtn' : ''}>
-
-
-                    {videos.map((item, id) =>
+            <div className={!isList ? 'gridBtn' : ''}>
 
 
+                {videos.map((item, id) =>
 
-                        isList ?
 
-                            <ul
-                                key={id}>
-                                <li>
-                                    <iframe
-                                        width="200"
-                                        height="200"
-                                        src={"https://www.youtube.com/embed/" + item.id.videoId}
-                                        title="YouTube video player"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        allowFullScreen
-                                    >
-                                    </iframe>
-                                    <p style={{ maxWidth: 200 }}>{item.snippet.title}</p>
-                                </li>
-                            </ul>
-                            :
 
-                            <ul>
-                                <li>
-                                    <iframe
-                                        width="200"
-                                        height="200"
-                                        src={"https://www.youtube.com/embed/" + item.id.videoId}
-                                        title={item.snippet.title}
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        allowFullScreen
-                                    >
-                                    </iframe>
-                                    <p style={{ maxWidth: 200 }}> {item.snippet.title}</p>
-                                </li>
+                    isList ?
 
-                            </ul>
-                    )}
+                        <ul
+                            key={id}>
+                            <li>
+                                <iframe
+                                    width="200"
+                                    height="200"
+                                    src={"https://www.youtube.com/embed/" + item.id.videoId}
+                                    title="YouTube video player"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowFullScreen
+                                >
+                                </iframe>
+                                <p style={{ maxWidth: 200 }}>{item.snippet.title}</p>
+                            </li>
+                        </ul>
+                        :
 
-                </div>
+                        <ul>
+                            <li>
+                                <iframe
+                                    width="200"
+                                    height="200"
+                                    src={"https://www.youtube.com/embed/" + item.id.videoId}
+                                    title={item.snippet.title}
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowFullScreen
+                                >
+                                </iframe>
+                                <p style={{ maxWidth: 200 }}> {item.snippet.title}</p>
+                            </li>
+
+                        </ul>
+                )}
 
             </div>
+
+
+
         </>
     )
 }

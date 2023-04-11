@@ -1,0 +1,46 @@
+.wrapper {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 80px;
+    bottom: 0px;
+
+}
+
+.title {
+    position: absolute;
+    width: 217px;
+    height: 52px;
+    left: calc(50% - 217px/2 + 0.5px);
+    top: 220px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 52px;
+    /* identical to box height, or 144% */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+}
+
+.search{
+    position: absolute;
+width: 686px;
+height: 52px;
+left: calc(50% - 686px/2);
+top: 312px;
+
+}
+.like{
+    position: absolute;
+    visibility: hidden;
+    width: 24px;
+    height: 24px;
+    right: 165px;
+    top: calc(50% - 24px/2);
+}
