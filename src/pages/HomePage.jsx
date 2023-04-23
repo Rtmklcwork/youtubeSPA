@@ -16,7 +16,8 @@ const HomePage = () => {
           <Tabs1/>
 
             <button className='lgn_btn'
-                onClick={() => dispatch(removeUser())}>
+                onClick={() => dispatch(removeUser())}
+                >
                 Log out from {email}
             </button>
 

@@ -2,7 +2,6 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from './slices/userSlice';
 import requestsReducer from "./slices/requestsSlice";
 import filterReducer from "./slices/filterSlice";
-import userDataReducer from './slices/userDataSlice'
 import storage from 'redux-persist/lib/storage'
 import {
   persistStore,
@@ -14,13 +13,13 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist'
+import userDataReducer from "./slices/userDataSlice";
 
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user', 'userData'],
-  blacklist: ['filter'] 
+blacklist: ['user.requests']
 }
 
 const rootReducer = combineReducers({

@@ -12,9 +12,8 @@ const requestsSlice = createSlice({
             state.requests.push(action.payload)
         },
         deleteRequest(state, action) {
+            state.requests = state.requests.filter((item) => typeof (item) === 'string' && item !== action.payload)
 
-            state.requests = state.requests.filter((item) => typeof(item)==='string' && item !== action.payload)
-                
         }
     }
 })

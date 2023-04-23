@@ -2,9 +2,10 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addRequests } from '../store/slices/requestsSlice';
+import { addRequests } from '../store/slices/userSlice';
 import { IsListBtn } from '../utils/IsListBtns';
 import { IsTableBtn } from '../utils/IsTableBtn';
+import { addUserData, replaceUserData } from '../store/slices/userDataSlice';
 
 
 
@@ -15,33 +16,43 @@ import { IsTableBtn } from '../utils/IsTableBtn';
 
 const Videos = () => {
     const [videos, setVideos] = useState([])
-    const [value, setValue] = useState([])
+    const [value, setValue] = useState('')
     const [isList, setIsList] = useState(true)
+    const user = useSelector(state => state.user)
+    const userID = useSelector(state => state.user.id)
+    const users = useSelector(state => state.userData.userData)
+
 
     const urlKEY = "AIzaSyCluKfq9XYmCC32ZAcNy-ZHYsHXHHpu8Lk";
     const fetchURL = `https://youtube.googleapis.com/youtube/v3/search?q=${value}&key=${urlKEY}&part=snippet,id&order=date&maxResults=10`;
     const dispatch = useDispatch()
     const store = useSelector(state => state.filter.filterData)
-    console.log(1, store.value);
 
+    console.log(123, user);
+    console.log(1234, users);
 
+    const addUsers = () => {
+        const arr = users.find(item => item.id === user.id) 
+        if (!arr) {
+          
+            dispatch(addUserData(user))
+        } else{
+            dispatch(replaceUserData(user))
+            
+        }
+            }
 
     const handleClick = () => {
         axios.get(fetchURL)
             .then((response) => {
                 setVideos(response.data.items)
             })
-
             .catch(e => console.log(e))
         setValue('')
-
-        console.log(value);
-
     };
 
     const getSavedRequests = () => {
         value !== '' ? dispatch(addRequests(value)) : alert('Введите название запроса')
-
     }
 
     useEffect(() => {
@@ -56,7 +67,10 @@ const Videos = () => {
             :
             <div>111</div>
 
-    }, [store.value])
+        addUsers()
+       
+    }, [])
+    //store.value
 
     return (
         <>

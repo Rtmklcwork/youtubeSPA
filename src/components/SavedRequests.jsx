@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import MyModal from '../utils/MyModal'
 import MyForm from './MyForm'
-import { deleteRequest } from '../store/slices/requestsSlice'
-import { addUserData } from '../store/slices/userDataSlice'
+import { setRequests } from '../store/slices/userSlice'
+import { deleteRequest } from '../store/slices/userSlice'
 
 
 
 const SavedRequests = ({ setActiveKey }) => {
-  const requests = useSelector(state => state.requests.requests)
+  const requests = useSelector(state => state.user.requests)
+  const userData = useSelector(state => state.userData.userData)
   const uid = useSelector(state => state.user.id)
-  const uidRequests = useSelector(state => state.userData.userData)
   const [modalActive, setModalActive] = useState('')
-  console.log(111, uid);
-  console.log(222, requests);
-  console.log(333, uidRequests);
+
+  console.log(userData);
+
+
+
+
 
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(addUserData({ uID: uid, requests: [...requests] }))
-  }, [uid])
+
 
   return (
     <div>
-
-      {requests.map((item, index) => {
+      {requests?.map((item, index) => {
         return (
           <div key={index}
 

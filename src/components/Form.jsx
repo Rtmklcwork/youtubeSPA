@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import s from './Form.module.css'
 
 
 
@@ -6,11 +7,11 @@ const Form = ({ title, handleClick }) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     return (
-        <div >
-            <div>
+        <div className={s.wrapper}>
+            <div className={s.login}>
                 Login
             </div>
-            <div >
+            <div className={s.email}>
                 <input
 
                     type='email'
@@ -20,7 +21,7 @@ const Form = ({ title, handleClick }) => {
                 />
             </div>
 
-            <div>
+            <div className={s.password}>
                 <input
                     type='password'
                     value={pass}
@@ -28,7 +29,7 @@ const Form = ({ title, handleClick }) => {
                     placeholder='password'
                 />
             </div>
-            <div >
+            <div className={s.btn}>
                 <button
 
                     onClick={() => handleClick(email, pass)}>
