@@ -19,7 +19,8 @@ import userDataReducer from "./slices/userDataSlice";
 const persistConfig = {
   key: 'root',
   storage,
-blacklist: ['user.requests']
+
+
 }
 
 const rootReducer = combineReducers({

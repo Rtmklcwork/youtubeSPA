@@ -3,14 +3,18 @@ import s from './Form.module.css'
 
 
 
+
 const Form = ({ title, handleClick }) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     return (
         <div className={s.wrapper}>
-            <div className={s.login}>
-                Login
+            <div className={s.logo}>
+            <img src='youtube16.png' alt='mops'/>
             </div>
+            {/* <div className={s.title}>
+                {title}
+            </div> */}
             <div className={s.email}>
                 <input
 
@@ -29,11 +33,11 @@ const Form = ({ title, handleClick }) => {
                     placeholder='password'
                 />
             </div>
-            <div className={s.btn}>
-                <button
+            <div>
+                <button className={s.btn}
 
                     onClick={() => handleClick(email, pass)}>
-                    {title}
+                    <span>{title}</span>
                 </button>
             </div>
         </div>

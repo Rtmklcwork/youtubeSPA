@@ -2,33 +2,36 @@ import React, { useState } from 'react'
 import { Slider } from 'antd'
 import { useDispatch } from 'react-redux'
 import { addFilterData } from '../store/slices/filterSlice'
+import s from './MyForm.module.css'
 
 
 
 
 const MyForm = ({ item, setActive, setActiveKey }) => {
 
-   
-    const [value, setValue] = useState({id: Date.now(), title: '', selected: '', quantity: 0 })
-       const dispatch = useDispatch()
+
+    const [value, setValue] = useState({ id: Date.now(), title: '', selected: '', quantity: 0 })
+    const dispatch = useDispatch()
     const handleClick = async () => {
-       await dispatch(addFilterData({ value }))
+        await dispatch(addFilterData({ value }))
         setActiveKey("1")
- 
+
     }
     return (
         <>
-            <form>
+            <form className={s.wrapper}>
+                <span className={s.title}>To save request</span>
                 <div>
 
                     <input
+                    className={s.input}
                         type="text"
                         readOnly
                         value={item}
                     />
                 </div>
-                <div>
-                    <input
+                
+                    {/* <input
                         value={value.title}
                         onChange={(e) => {
                             e.preventDefault(); setValue((prevname) => {
@@ -42,10 +45,11 @@ const MyForm = ({ item, setActive, setActiveKey }) => {
                             })
                         }}
                         type="text"
-                    />
-                </div>
+                    /> */}
+                
                 <div>
                     <select
+                    className={s.select}
                         value={value.selected}
                         onChange={(e) => setValue((prevselect) => {
                             const data = {
@@ -91,8 +95,8 @@ const MyForm = ({ item, setActive, setActiveKey }) => {
                 </div>
 
                 <div>
-                    <button type='button' onClick={() => setActive(false)}>Не сохранять</button>
-                    <button type='button' onClick={() => handleClick()}>Сохранить</button>
+                    <button className={s.btns} type='button' onClick={() => setActive(false)}>Не сохранять</button>
+                    <button className={s.btns} type='button' onClick={() => handleClick()}>Сохранить</button>
                 </div>
             </form>
         </>

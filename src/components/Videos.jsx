@@ -6,6 +6,8 @@ import { addRequests } from '../store/slices/userSlice';
 import { IsListBtn } from '../utils/IsListBtns';
 import { IsTableBtn } from '../utils/IsTableBtn';
 import { addUserData, replaceUserData } from '../store/slices/userDataSlice';
+import s from './Videos.module.css'
+import { HeartOutlined } from '@ant-design/icons'
 
 
 
@@ -21,29 +23,28 @@ const Videos = () => {
     const user = useSelector(state => state.user)
     const userID = useSelector(state => state.user.id)
     const users = useSelector(state => state.userData.userData)
+    const requests = useSelector(state => state.requests)
 
 
     const urlKEY = "AIzaSyCluKfq9XYmCC32ZAcNy-ZHYsHXHHpu8Lk";
-    const fetchURL = `https://youtube.googleapis.com/youtube/v3/search?q=${value}&key=${urlKEY}&part=snippet,id&order=date&maxResults=10`;
+    const fetching = `https://www.googleapis.com/youtube/v3/search?q=${value}&key=${urlKEY}&part=snippet,id&order=date&maxresults=10`;
     const dispatch = useDispatch()
     const store = useSelector(state => state.filter.filterData)
 
-    console.log(123, user);
-    console.log(1234, users);
-
+   
     const addUsers = () => {
-        const arr = users.find(item => item.id === user.id) 
+        const arr = users.find(item => item.id === user.id)
         if (!arr) {
-          
+
             dispatch(addUserData(user))
-        } else{
+        } else {
             dispatch(replaceUserData(user))
-            
+
         }
-            }
+    }
 
     const handleClick = () => {
-        axios.get(fetchURL)
+        axios.get(fetching)
             .then((response) => {
                 setVideos(response.data.items)
             })
@@ -65,48 +66,56 @@ const Videos = () => {
 
                 .catch(e => console.log(e))
             :
-            <div>111</div>
+            <div>404 NOT FOUND</div>
 
         addUsers()
-       
-    }, [])
-    //store.value
+        setValue('')
+    }, [user.requests])
+
+    console.log(111, value);
+
 
     return (
         <>
 
-            <div >
-                <div >
-                    Поиск видео
-                </div>
-                <div>
-                    <input
-                        value={value}
-                        type="text"
-                        placeholder='search video...'
-                        onChange={(e) => {
-                            setValue(e.target.value)
-                        }}>
-                    </input>
+            <div className={s.wrapper} >
 
-                    <button
-                        className='search_btn'
-                        onClick={handleClick}>
-                        Search
-                    </button>
+                <div className={s.title} >
+                    <h2>Search video</h2>
+                    <form className={s.form}>
+
+                        <input className={s.search_npt}
+                            value={value}
+                            type="text"
+                            placeholder='Enter a request...'
+                            onChange={(e) => {
+                                setValue(e.target.value)
+                            }}>
+                        </input>
+                        <button className={s.save_btn}
+                            onClick={getSavedRequests}>
+                            <HeartOutlined/>
+                        </button>
+                        <div>
+                            <button
+                                className={s.search_btn}
+                                onClick={handleClick}>
+                                Search
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div>
-                    <button
-                        onClick={getSavedRequests}>
-                        Save
-                    </button>
+
+
+
+
+                <div className={!videos.length > 0 ? s.fltr_btns : ''}>
+                    <IsListBtn onClick={() => setIsList(true)} />
+                    <IsTableBtn onClick={() => setIsList(false)} />
                 </div>
             </div>
 
-            <div>
-                <IsListBtn onClick={() => setIsList(true)} />
-                <IsTableBtn onClick={() => setIsList(false)} />
-            </div>
+
 
             <div className={!isList ? 'gridBtn' : ''}>
 
@@ -119,7 +128,7 @@ const Videos = () => {
 
                         <ul
                             key={id}>
-                            <li>
+                            <li className={s.list}>
                                 <iframe
                                     width="200"
                                     height="200"
@@ -135,7 +144,7 @@ const Videos = () => {
                         :
 
                         <ul>
-                            <li>
+                            <li className={s.list}>
                                 <iframe
                                     width="200"
                                     height="200"

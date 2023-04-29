@@ -18,6 +18,8 @@ const userDataSlice = createSlice({
         },
         replaceUserData(state, action) {
             const currentUser = state.userData.find(item=> item.id == action.payload.id)
+
+            console.log(333,currentUser);
            currentUser.requests = action.payload.requests
             // state.userData = [...state.userData,action.payload]
             

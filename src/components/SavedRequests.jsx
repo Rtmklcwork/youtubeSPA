@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import MyModal from '../utils/MyModal'
 import MyForm from './MyForm'
-import { setRequests } from '../store/slices/userSlice'
 import { deleteRequest } from '../store/slices/userSlice'
+import s from './SavedRequests.module.css'
+import {CloseOutlined} from '@ant-design/icons'
 
 
 
@@ -13,7 +14,7 @@ const SavedRequests = ({ setActiveKey }) => {
   const uid = useSelector(state => state.user.id)
   const [modalActive, setModalActive] = useState('')
 
-  console.log(userData);
+
 
 
 
@@ -31,8 +32,8 @@ const SavedRequests = ({ setActiveKey }) => {
           <div key={index}
 
           >
-            <button style={{ width: 200 }} onClick={() => setModalActive(item)}>{item}</button>
-            <button onClick={() => dispatch(deleteRequest(item))}>delete</button>
+            <button className={s.requests} onClick={() => setModalActive(item)}>{item}</button>
+            <button className={s.delete_btn} onClick={() => dispatch(deleteRequest(item))}><CloseOutlined/></button>
 
           </div>
 

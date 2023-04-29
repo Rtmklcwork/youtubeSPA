@@ -1,0 +1,38 @@
+.requests{
+  flex-basis: 300px;
+  border: none;
+  margin: 0;
+  outline: none;
+  -webkit-appearance: none;
+  height: 30px;
+  vertical-align: top;
+  background-color: #ffffff;
+  color: black;
+  font-size: 14px;
+  font-style: italic;
+  padding: 0 8px 0 0;
+  width: 192px;
+border: 2px solid #1E90FF;
+border-radius: 10px;
+}
+.delete_btn{
+ margin: 0;
+ padding: 0;
+ width:auto ;
+  background-color: white;
+  display: inline-block;
+  color: black  ;
+  text-decoration: none;
+  /* padding: .5em 2em; */
+  outline: none;
+  border-width: 2px 0;
+  border-style: solid;
+  border-color: #1E90FF #1E90FF #1E90FF;
+  border-radius: 6px;
+  /* background: linear-gradient(#1E90FF, #1E90FF) #1E90FF; */
+  transition: 0.2s;
+
+  font-size: 14px;
+
+height: 30px;
+}
