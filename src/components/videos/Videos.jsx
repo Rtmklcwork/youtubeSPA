@@ -104,7 +104,7 @@ const Videos = () => {
                         <div>
                             <button
                                 className={s.search_btn}
-                                onClick={handleClick}>
+                                onClick={()=>handleClick()}>
                                 Search
                             </button>
                         </div>

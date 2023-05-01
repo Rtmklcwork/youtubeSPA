@@ -3,7 +3,6 @@ import SavedRequests from '../savedRequests/SavedRequests'
 import '../searchVideo/Search'
 import { useState } from 'react';
 import Videos from '../videos/Videos';
-import Search from '../searchVideo/Search';
 
 
 
@@ -24,9 +23,6 @@ const Tabs1 = () => {
         <SavedRequests setActiveKey={setActiveKey} />
       </Tabs.TabPane>
   
-      <Tabs.TabPane tab="sasa" key="3">
-        <Search setActiveKey={setActiveKey} />
-      </Tabs.TabPane>
   
     
     </Tabs>
