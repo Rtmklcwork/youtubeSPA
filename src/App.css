@@ -45,3 +45,9 @@
   transform: scale(1);
 }
 
+.gridBtn{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+
+}

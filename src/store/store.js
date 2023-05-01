@@ -1,6 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from './slices/userSlice';
-import requestsReducer from "./slices/requestsSlice";
 import filterReducer from "./slices/filterSlice";
 import storage from 'redux-persist/lib/storage'
 import {
@@ -19,13 +18,12 @@ import userDataReducer from "./slices/userDataSlice";
 const persistConfig = {
   key: 'root',
   storage,
-
-
+  blacklist: ['user.requests']
 }
 
 const rootReducer = combineReducers({
   user: userReducer,
-  requests: requestsReducer,
+  
   filter: filterReducer,
   userData: userDataReducer,
 })

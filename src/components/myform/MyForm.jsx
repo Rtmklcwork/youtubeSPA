@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Slider } from 'antd'
 import { useDispatch } from 'react-redux'
-import { addFilterData } from '../store/slices/filterSlice'
+import { addFilterData } from '../../store/slices/filterSlice'
 import s from './MyForm.module.css'
 
 

@@ -1,0 +1,49 @@
+.wrapper {
+  margin: auto;
+  text-align: center;
+  border: 0.5px solid black;
+  min-width: 200px;
+  max-width: 300px;
+  min-height: 300px;
+  max-height: 600px;
+  border-style: none;
+  background-color: white;
+  box-shadow: 10px 10px 10px grey;
+  border-radius: 40px;
+}
+
+.title {
+  font-family: 'Snell RoundHand';
+  text-shadow: 1px 1px 1px grey;
+}
+
+.email {
+  
+  margin: 10px;
+}
+
+.password {
+  margin: 10px;
+}
+
+
+.logo {
+  padding-top: 30px;
+}
+
+.btn{
+  margin: 20px;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: .5em 2em;
+  outline: none;
+  border-width: 2px 0;
+  border-style: solid none;
+  border-color: #1E90FF #1E90FF #1E90FF;
+  border-radius: 6px;
+  background: linear-gradient(#1E90FF, #1E90FF) #1E90FF;
+  transition: 0.2s;
+}
+.btn:hover { background: linear-gradient(#006ef5, #006ef5) #006ef5; }
+.btn:active { background: linear-gradient(#009bf5, #009bf5) #009bf5; }

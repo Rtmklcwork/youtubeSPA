@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Login from '../components/Login';
+import Login from '../login/Login'
 import s from './LoginPage.module.css'
+import { useSelector } from 'react-redux';
+
 
 
 
 const LoginPage = () => {
+    const request = useSelector(state=>state.userData)
+    console.log(555,request);
     return (
         <div className={s.wrapper}>
             <h1 className={s.title}>YouTube SPA by Rtmklc</h1>

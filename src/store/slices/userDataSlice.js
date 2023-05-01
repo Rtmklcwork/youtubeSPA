@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    userData: []
+    userData: [],
+
 };
 
 
@@ -13,16 +14,14 @@ const userDataSlice = createSlice({
     initialState,
     reducers: {
         addUserData(state, action) {
-            // state.userData.push(...state.userData, action.payload)
             state.userData.push(action.payload)
+            localStorage.setItem('user', JSON.stringify(state))
         },
         replaceUserData(state, action) {
-            const currentUser = state.userData.find(item=> item.id == action.payload.id)
+            const currentUser = state.userData.find(item => item.id == action.payload.id)
+            currentUser.requests = action.payload.requests
+          
 
-            console.log(333,currentUser);
-           currentUser.requests = action.payload.requests
-            // state.userData = [...state.userData,action.payload]
-            
         }
     }
 });

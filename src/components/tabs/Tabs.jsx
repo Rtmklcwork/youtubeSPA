@@ -1,7 +1,9 @@
 import { Tabs } from 'antd';
-import SavedRequests from './SavedRequests';
-import Videos from './Videos';
+import SavedRequests from '../savedRequests/SavedRequests'
+import '../searchVideo/Search'
 import { useState } from 'react';
+import Videos from '../videos/Videos';
+import Search from '../searchVideo/Search';
 
 
 
@@ -20,6 +22,10 @@ const Tabs1 = () => {
 
       <Tabs.TabPane tab="Saved" key="2">
         <SavedRequests setActiveKey={setActiveKey} />
+      </Tabs.TabPane>
+  
+      <Tabs.TabPane tab="sasa" key="3">
+        <Search setActiveKey={setActiveKey} />
       </Tabs.TabPane>
   
     

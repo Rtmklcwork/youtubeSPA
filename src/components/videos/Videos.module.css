@@ -1,19 +1,18 @@
 .title{
   font-family: 'Comic Sans MS', cursive, sans-serif;
 }
-.fltr_btns{
- visibility: hidden;
-}
+
 
 .list{
   list-style-type: none;
+  margin-top: 50px;
 }
 
 .wrapper{
   display: flex;
   justify-content: center;
 }
-.form{
+.search{
     width: 50vh;
   display: flex;
   justify-content: center;
@@ -82,3 +81,14 @@
 }
 .search_btn:hover { background: linear-gradient(#006ef5, #006ef5) #006ef5; }
 .search_btn:active { background: linear-gradient(#009bf5, #009bf5) #009bf5; }
+
+.fltr_btn{
+
+ border-style: none;
+
+}
+.fltr_btns{
+  
+visibility: hidden;
+ 
+ }

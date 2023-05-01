@@ -1,20 +1,18 @@
 import React from 'react';
-import Form from './Form';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../store/slices/userSlice';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import Form from '../form/Form'
+import { setUser } from '../../store/slices/userSlice';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 
-
-
-const Login = () => {
+const SignUp = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleLogin = (email, password) => {
+    const handleRegister = (email, password) => {
         const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(auth, email, password)
             .then(({ user }) => {
                 dispatch(setUser({
                     email: user.email,
@@ -22,24 +20,19 @@ const Login = () => {
                     token: user.accessToken,
                 }))
                 navigate('/');
-               
             })
-            .catch(console.log)
+            .catch(console.error)
     };
 
 
     return (
-        <div className='login'>
-           
+        <div className='lgn'>
             <Form
-                title='Sign in'
-                handleClick={handleLogin}
+                title='Register'
+                handleClick={handleRegister}
             />
         </div>
     )
 }
 
-export default Login;
-
-
-
+export default SignUp

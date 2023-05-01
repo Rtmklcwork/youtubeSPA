@@ -2,16 +2,13 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addRequests } from '../store/slices/userSlice';
-import { IsListBtn } from '../utils/IsListBtns';
-import { IsTableBtn } from '../utils/IsTableBtn';
-import { addUserData, replaceUserData } from '../store/slices/userDataSlice';
+import { addRequests } from './../../store/slices/userSlice';
+import { IsListBtn } from './../../utils/IsListBtns';
+import { IsTableBtn } from './../../utils/IsTableBtn';
+import { addUserData, replaceUserData } from './../../store/slices/userDataSlice';
 import s from './Videos.module.css'
 import { HeartOutlined } from '@ant-design/icons'
-
-
-
-
+import Search from '../searchVideo/Search';
 
 
 
@@ -21,9 +18,10 @@ const Videos = () => {
     const [value, setValue] = useState('')
     const [isList, setIsList] = useState(true)
     const user = useSelector(state => state.user)
-    const userID = useSelector(state => state.user.id)
     const users = useSelector(state => state.userData.userData)
-    const requests = useSelector(state => state.requests)
+
+
+
 
 
     const urlKEY = "AIzaSyCluKfq9XYmCC32ZAcNy-ZHYsHXHHpu8Lk";
@@ -31,9 +29,10 @@ const Videos = () => {
     const dispatch = useDispatch()
     const store = useSelector(state => state.filter.filterData)
 
-   
+
     const addUsers = () => {
         const arr = users.find(item => item.id === user.id)
+
         if (!arr) {
 
             dispatch(addUserData(user))
@@ -52,6 +51,8 @@ const Videos = () => {
         setValue('')
     };
 
+
+
     const getSavedRequests = () => {
         value !== '' ? dispatch(addRequests(value)) : alert('Введите название запроса')
     }
@@ -66,23 +67,24 @@ const Videos = () => {
 
                 .catch(e => console.log(e))
             :
-            <div>404 NOT FOUND</div>
+            <div>Video not found</div>
 
         addUsers()
         setValue('')
     }, [user.requests])
 
-    console.log(111, value);
+
+
+
 
 
     return (
         <>
-
             <div className={s.wrapper} >
 
                 <div className={s.title} >
                     <h2>Search video</h2>
-                    <form className={s.form}>
+                    <div className={s.search}>
 
                         <input className={s.search_npt}
                             value={value}
@@ -92,10 +94,13 @@ const Videos = () => {
                                 setValue(e.target.value)
                             }}>
                         </input>
-                        <button className={s.save_btn}
-                            onClick={getSavedRequests}>
-                            <HeartOutlined/>
-                        </button>
+
+                        <div>
+                            <button className={s.save_btn}
+                                onClick={getSavedRequests}>
+                                <HeartOutlined />
+                            </button>
+                        </div>
                         <div>
                             <button
                                 className={s.search_btn}
@@ -103,20 +108,17 @@ const Videos = () => {
                                 Search
                             </button>
                         </div>
-                    </form>
-                </div>
+                    </div>
 
-
-
-
-                <div className={!videos.length > 0 ? s.fltr_btns : ''}>
-                    <IsListBtn onClick={() => setIsList(true)} />
-                    <IsTableBtn onClick={() => setIsList(false)} />
                 </div>
             </div>
 
+          
+            <div className={!videos.length > 0 ? s.fltr_btns : ''}>
+                <IsListBtn className={s.fltr_btn} onClick={() => setIsList(true)} />
+                <IsTableBtn className={s.fltr_btn} onClick={() => setIsList(false)} />
 
-
+            </div>
             <div className={!isList ? 'gridBtn' : ''}>
 
 
@@ -126,9 +128,9 @@ const Videos = () => {
 
                     isList ?
 
-                        <ul
+                        <ul className={s.list}
                             key={id}>
-                            <li className={s.list}>
+                            <li >
                                 <iframe
                                     width="200"
                                     height="200"
