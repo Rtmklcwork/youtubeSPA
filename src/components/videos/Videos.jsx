@@ -8,7 +8,6 @@ import { IsTableBtn } from './../../utils/IsTableBtn';
 import { addUserData, replaceUserData } from './../../store/slices/userDataSlice';
 import s from './Videos.module.css'
 import { HeartOutlined } from '@ant-design/icons'
-import Search from '../searchVideo/Search';
 
 
 

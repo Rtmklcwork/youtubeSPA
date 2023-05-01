@@ -1,6 +1,5 @@
 import { Tabs } from 'antd';
 import SavedRequests from '../savedRequests/SavedRequests'
-import '../searchVideo/Search'
 import { useState } from 'react';
 import Videos from '../videos/Videos';
 
